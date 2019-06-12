@@ -1,0 +1,26 @@
+; information
+SPLV 1; Smashing Programming Language Version: 1
+SCV 10000; Smashing Compiler Version: 1.00.00
+MVSVMV 10000; Minimum Version SVM Version: 1.00.00
+; constants
+push cts 1
+push cts 2
+; programming start
+; int main()
+_main:
+	; return 1 + 2;
+	push stk %cts-1
+	push stk %cts
+	push rax %stk-1
+	push rbx %stk
+	add rax rbx
+	push ret %rax
+	pop rax 2
+	pop rbx 1
+	pop stk 2
+	ret
+	endfun
+; programming end
+; System Start-up & Recovery
+call main
+pop ret 1
